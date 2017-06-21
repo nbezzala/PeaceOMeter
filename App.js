@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Image } from 'react-native';
 
 class Greeting extends React.Component {
     render() {
         return (
-            <Text>Hello {this.props.name}!</Text> 
+            <Text>Hi {this.props.name} !</Text> 
         );
     }
 }
@@ -26,29 +26,31 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <Greeting name='User Name'/>
+        <Bananas />
+        <Text>How relaxed do you feel now?</Text>
+        <Text></Text>
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu. OK?</Text>
+        <Text></Text>
         <Text>My test text</Text>
-        <Text>My text text</Text>
-        <Greeting name='Manthan'/>
-        <Greeting name='Harshi' />
       </View>
     );
   }
 }
 
-function tick() {
-    const element = (
-        <Text>{new Date.toLocaleTimeString()}</Text>    
-    );
-}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ff1',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  bluetext: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 30,
   },
 });
