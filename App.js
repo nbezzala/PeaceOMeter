@@ -4,7 +4,7 @@ import { AppRegistry, StyleSheet, Text, View, Image, Slider } from 'react-native
 class Greeting extends React.Component {
     render() {
         return (
-            <Text>Hi {this.props.name} !</Text> 
+            <Text style={styles.blueText}>Hi {this.props.name} !</Text> 
         );
     }
 }
@@ -31,10 +31,14 @@ class SliderComponent extends React.Component {
 
     render() {
 	    return (
-	        <Slider 
-	            value={5}
-	            step={1} minimumValue={1} maximumValue={10} 
-	        />
+            <View>
+    	        <Slider 
+    	            value={5}
+    	            step={1} minimumValue={1} maximumValue={10} 
+                    onValueChange = {(value) => this.setState({value})}
+    	         />
+                 <Text style={styles.sliderText}>{this.state.value}</Text>
+            </View>
 	    );
     }
 }
@@ -46,12 +50,11 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Greeting name='User Name'/>
-        <Bananas />
+        <Text></Text>
         <Text>How relaxed do you feel now?</Text>
         <Text></Text>
         <SliderComponent />
         <Text></Text>
-        <Text>Value: {5}</Text>
       </View>
     );
   }
@@ -69,10 +72,18 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
 
-  bluetext: {
+  blueText: {
     color: 'blue',
     fontWeight: 'bold',
     fontSize: 30,
+  },
+
+  sliderText: {
+    color: 'red',
+    fontWeight: 'bold',
+    fontSize: 30,
+    justifyContent: 'center',
+    textAlign: 'center',
   },
 
   slider: {
