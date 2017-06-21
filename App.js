@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { AppRegistry, StyleSheet, Text, View, Image } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Image, Slider } from 'react-native';
 
 class Greeting extends React.Component {
     render() {
@@ -22,7 +22,26 @@ class Bananas extends React.Component {
     }
 }
 
+class SliderComponent extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {value: 5};
+    }
+
+    render() {
+	    return (
+	        <Slider 
+	            value={5}
+	            step={1} minimumValue={1} maximumValue={10} 
+	        />
+	    );
+    }
+}
+
 export default class App extends React.Component {
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -30,10 +49,9 @@ export default class App extends React.Component {
         <Bananas />
         <Text>How relaxed do you feel now?</Text>
         <Text></Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu. OK?</Text>
+        <SliderComponent />
         <Text></Text>
-        <Text>My test text</Text>
+        <Text>Value: {5}</Text>
       </View>
     );
   }
@@ -46,6 +64,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ff1',
     alignItems: 'center',
     justifyContent: 'center',
+    marginLeft: 1,
+    marginRight: 1,
+    alignItems: 'stretch',
   },
 
   bluetext: {
@@ -53,4 +74,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
   },
+
+  slider: {
+    width: 300,
+  }
 });
