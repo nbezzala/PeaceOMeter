@@ -11,19 +11,6 @@ class Greeting extends React.Component {
 }
 
 
-class HistoryScreen extends React.Component {
-    static navigationOptions = {
-        title: 'History of Peace',
-    }
-
-    render() {
-        return(
-            <View>
-                <Text>Some text message</Text>
-            </View>
-        );
-    }
-}
 
 
 class SliderComponent extends React.Component {
@@ -47,7 +34,21 @@ class SliderComponent extends React.Component {
     }
 }
 
-export default class HomeScreen extends React.Component {
+class HistoryScreen extends React.Component {
+    static navigationOptions = {
+        title: 'History of Peace',
+    }
+
+    render() {
+        return(
+            <View>
+                <Text>Some text message</Text>
+            </View>
+        );
+    }
+}
+
+class HomeScreen extends React.Component {
 
     static navigationOptions = {
         title: 'Welcome',
@@ -55,8 +56,8 @@ export default class HomeScreen extends React.Component {
 
 
   render() {
-      const {navigate} = this.props.navigation;
 
+    const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
         <Greeting name='User Name'/>
@@ -66,7 +67,7 @@ export default class HomeScreen extends React.Component {
         <SliderComponent />
         <Text></Text>
         <Button 
-            onPress = {() => navigate('History')}
+            onPress={() => this.props.navigation.navigate('History', {user: 'Lucy'})}
             title = "History of Peace"
         />
       </View>
@@ -74,10 +75,22 @@ export default class HomeScreen extends React.Component {
   }
 }
 
-const PeaceOMeter = StackNavigator({
+const SimpleAppNavigator = StackNavigator({
     Home: { screen: HomeScreen },
     History: { screen: HistoryScreen }
 });
+
+const AppNavigation = () => (
+    <SimpleAppNavigator />    
+);
+
+export default class App extends React.Component {
+    render() {
+        return(
+            <AppNavigation/> 
+        );
+    }
+}
 
 
 const styles = StyleSheet.create({
