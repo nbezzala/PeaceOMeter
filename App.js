@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { AppRegistry, StyleSheet, Text, View, Image, Slider } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Button, Image, Slider } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
 class Greeting extends React.Component {
     render() {
@@ -22,6 +23,21 @@ class Bananas extends React.Component {
     }
 }
 
+class HistoryScreen extends React.Component {
+    static navigationOptions = {
+        title: 'History of Peace',
+    }
+
+    render() {
+        return(
+            <View>
+                <Text>Some text message</Text>
+            </View>
+        );
+    }
+}
+
+
 class SliderComponent extends React.Component {
 
     constructor(props) {
@@ -43,10 +59,16 @@ class SliderComponent extends React.Component {
     }
 }
 
-export default class App extends React.Component {
+export default class HomeScreen extends React.Component {
+
+    static navigationOptions = {
+        title: 'Welcome',
+    };
 
 
   render() {
+      const {navigate} = this.props.navigation;
+
     return (
       <View style={styles.container}>
         <Greeting name='User Name'/>
@@ -55,10 +77,19 @@ export default class App extends React.Component {
         <Text></Text>
         <SliderComponent />
         <Text></Text>
+        <Button 
+            onPress = {() => navigate('History')}
+            title = "History of Peace"
+        />
       </View>
     );
   }
 }
+
+const PeaceOMeter = StackNavigator({
+    Home: { screen: HomeScreen },
+    History: { screen: HistoryScreen }
+});
 
 
 const styles = StyleSheet.create({
