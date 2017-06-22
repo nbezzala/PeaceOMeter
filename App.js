@@ -11,18 +11,6 @@ class Greeting extends React.Component {
 }
 
 
-class Bananas extends React.Component {
-    render() {
-        let pic = {
-            uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
-        };
-
-        return (
-            <Image source={pic} style={{width: 193, height: 110}} />
-        );
-    }
-}
-
 class HistoryScreen extends React.Component {
     static navigationOptions = {
         title: 'History of Peace',
