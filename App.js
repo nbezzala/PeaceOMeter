@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { AppRegistry, StyleSheet, Text, View, Button, Image, Slider } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Button, Image, Slider, FlatList } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 class Greeting extends React.Component {
@@ -41,8 +41,17 @@ class HistoryScreen extends React.Component {
 
     render() {
         return(
-            <View>
-                <Text>Some text message</Text>
+            <View style={styles.container}>
+                <FlatList
+                    data = {[
+                        {key: '2017-06-01 10:30:42', value: 4},
+                        {key: '2017-06-01 11:30:42', value: 4},
+                        {key: '2017-06-01 12:30:42', value: 4},
+                        {key: '2017-06-02 12:30:42', value: 4},
+                        {key: '2017-06-03 10:30:42', value: 4},
+                    ]}
+                    renderItem = {({item}) => <Text style={styles.item}>{item.key}      {item.value}</Text>}
+                />
             </View>
         );
     }
@@ -96,13 +105,20 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ff1',
+    backgroundColor: '#c13',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 1,
     marginRight: 1,
     alignItems: 'stretch',
   },
+
+    item: {
+        padding: 10,
+        fontSize: 18,
+        height: 44,
+        color: 'blue',
+    },
 
   blueText: {
     color: 'blue',
